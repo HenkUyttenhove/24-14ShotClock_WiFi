@@ -23,7 +23,7 @@ The code for the remote can be found in the remote directory.
 
 **24/14 display with ESP32**
 
-The ESP32 is connected to a I2C MCP23017 chip.  The advantage is that this simplifies the connections to the ESP32.
+The ESP32 is connected to a I2C MCP23017 chip.  The advantage is that this simplifies the connections to the ESP32.  How the electronics are build can be found in my earlier project for 24/14 clock as I just reused the existing hardware.
 > Note that additional resistors are required between 3.3v and the SCL and SDA pins.  Without this, you will get strange signals.
 
 ![Overview](images/display.jpeg)
