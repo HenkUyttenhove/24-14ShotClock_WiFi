@@ -69,19 +69,25 @@ _thread.start_new_thread(StartSocket,("start",))
 #Actual code for the clock
 while True:
 #    wdt.feed()
-    if not p_24():   #if 24sec reset is pushed
+    if not p_24() and p_14():   #if 24sec reset is pushed
         ShotClock = Reset24
         StartCounter = time.time()
 
-    if not p_14():   #if 14 seconds is pushed
+    if not p_14() and p_24():   #if 14 seconds is pushed
         ShotClock = Reset14
         StartCounter = time.time()
 
+    if not p_14() and not p_24():   #if 1both 14 and 24 are pushed, send 99 for blank
+        ShotClock = 99
+        StartCounter = time.time()
+
     if not p_hold():    #if stop counter is active
-        if not p_24():
+        if not p_24() and p_14():
             ShotclockRemaing = Reset24
-        if not p_14():
+        if not p_14() and p_24():
             ShotclockRemaing = Reset14
+        if not p_24() and not p_14():
+            ShotclockRemaing = 99
         ShotClock = ShotclockRemaing
         StartCounter = time.time()
     else:
