@@ -33,7 +33,12 @@ while True:
     LowNumber  = int(data-HighNumber*10)
     
     print("High digit", HighNumber, " Low digit", LowNumber)
-    code = [list[HighNumber],list[LowNumber]]
+    
+    if data == 99:
+        code = [0,0]
+    else:
+        code = [list[HighNumber],list[LowNumber]]
+    
     byte_array = bytearray(code)
     i2c.writeto_mem(32, 0x14, byte_array)  #set ports A to out
     
@@ -44,6 +49,3 @@ while True:
     
     LastUpdate = data
     pinbuzzer.value(0)
-    
-    
-    
